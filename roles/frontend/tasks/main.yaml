@@ -1,3 +1,9 @@
-- name: Demo
-  ansible.builtin.debug:
-    msg: component - frontend
+- name: Install Nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
+
+- name: copy roboshop config file
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
